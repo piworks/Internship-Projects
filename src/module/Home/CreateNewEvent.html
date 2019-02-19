@@ -1,0 +1,193 @@
+<div ng-controller="PartCalendarController">
+
+  
+  <div class="col-sm-2 panel panel-default" style="padding: 0 0 0 0">
+    <div class="panel-heading">
+      <h4>Add and Delete</h4>
+    </div>
+    <u1 class="list-group">
+      <li class="list-group-item clearfix " ng-click="run(parttime)" ng-repeat="parttime in parttimeList">
+        {{parttime.firstname}}
+        <div class="btn-group  pull-right ">
+          <button type="button" class="btn btn-sm btn-default" ng-submit="add(parttime)" data-toggle="modal"
+            data-target="#myModal" title="Click to add an event">
+            <i class="glyphicon glyphicon-plus"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-default" ng-click="findEvent(parttime)" data-toggle="modal"
+            data-target="#myModal2" title="Click to delete an event">
+            <i class="glyphicon glyphicon-minus"></i>
+          </button>
+
+        </div>
+      </li>
+    </u1>
+
+  </div>
+  <!-- Modal -->
+
+  <form ng-submit="addList(event)">
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add event for {{parttime.firstname}} {{parttime.lastname}}</h4>
+          </div>
+          <div class="modal-body clearfix">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label>Working at:</label>
+                <input type="text" list="work" class="form-control" ng-model="event.Work" required>
+                <datalist id="work">
+                  <option value="inoffice">inoffice</option>
+                  <option value="home" selected>home</option>
+                  <option value="remote">remote</option>
+                </datalist>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Description:</label>
+                <input type="text" class="form-control" ng-model="event.Description">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>Pick Date:</label>
+                <input ng-model="event.StartAt" class="form-control" datetime-picker date-format="yyyy-MM-dd HH:mm:ss">
+              </div>
+
+              <div class="col-md-12 clearfix">
+                <input type="submit" value="add to list" class="btn btn-primary btn-sm pull-right" ng-show="submit" />
+              </div>
+            </div>
+            <div style="max-height: 10em; overflow: auto">
+              <table class="table table-striped panel-body">
+                <thead>
+                  <tr>
+                    <td>Description</td>
+                    <td>Time</td>
+                    <td>Work</td>
+                    <td></td>
+                  </tr>
+
+                <tbody>
+                  <tr ng-repeat="event in eventList">
+                    <td>
+                      {{event.Description}}
+                    </td>
+                    <td>
+                      {{event.StartAt}}
+                    </td>
+                    <td>
+                      {{event.Work}}
+                    </td>
+                    <td>
+                      <button class="btn btn-default btn-sm" ng-click="cancel(event)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary btn-sm" ng-click="add(parttime)" data-dismiss="modal">Add Days</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Modal2 -->
+  <div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Delete event for {{parttime.firstname}} {{parttime.lastname}}</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <td>Date</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="event in eventList">
+                <td>
+                  {{event.description}}
+                </td>
+                <td>
+                  {{event.start}}
+                </td>
+                <td>
+                  <button class="btn btn-default btn-sm open-dialog" type="button" ng-click="confirmationDialog(event)">
+                    <i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-sm-7">
+    <div role="main">
+      <div class="container">
+        <section id="directives-calendar">
+          <div class="well">
+            <div class="row-fluid">
+              <div class="span8">
+                <tabset>
+                  <tab select="renderCalender('myCalendar');">
+                    <tab-heading>
+                      <i class="glyphicon glyphicon-bell"></i> Calendar
+                    </tab-heading>
+                    <div class="btn-toolbar">
+                      <div class="btn-group">
+                        <button class="btn btn-primary" ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
+                        <button class="btn btn-primary" ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
+                        <button class="btn btn-primary" ng-click="changeView('month', 'myCalendar')">Month</button>
+                      </div>
+                    </div>
+                    <div class="calendar" ng-model="events" calendar="myCalendar" ui-calendar="uiConfig.calendar"></div>
+                  </tab>
+                </tabset>
+              </div>
+            </div>
+          </div>
+
+          <body>
+            <div id="calendar"></div>
+          </body>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmation-dialog">
+    <div class="modal fade confirmation-dialog" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{confirmationDialogConfig.title}}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="span5">{{confirmationDialogConfig.message}}</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" ng-repeat="button in confirmationDialogConfig.buttons" ng-click="delete(event,parttime)"
+              class="btn btn-primary">{{button.label}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

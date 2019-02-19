@@ -1,0 +1,137 @@
+#topheader .navbar-nav li > a {
+    text-transform: capitalize;
+    color: #333;
+    transition: background-color .2s, color .2s;
+}
+
+#topheader .navbar-nav li.active > a {
+    background-color: #333;
+    color: #fff;
+}
+
+.view-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.thumbnail {
+    margin-bottom: 30px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 30px;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    border: 0;
+}
+
+    .item.list-group-item .img-event {
+        float: left;
+        width: 30%;
+    }
+
+    .item.list-group-item .list-group-image {
+        margin-right: 10px;
+    }
+
+    .item.list-group-item .thumbnail {
+        margin-bottom: 0px;
+        display: inline-block;
+    }
+
+    .item.list-group-item .caption {
+        float: left;
+        width: 70%;
+        margin: 0;
+    }
+
+    .item.list-group-item:before, .item.list-group-item:after {
+        display: table;
+        content: " ";
+    }
+
+    .item.list-group-item:after {
+        clear: both;
+    }
+
+.searchbar{
+margin-bottom: auto;
+margin-top: auto;
+height: 60px;
+background-color: #353b48;
+border-radius: 30px;
+padding: 10px;
+}
+
+.search_input{
+color: white;
+border: 0;
+outline: 0;
+background: none;
+width: 0;
+caret-color:transparent;
+line-height: 40px;
+transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input{
+padding: 0 10px;
+width: 450px;
+caret-color:red;
+transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon{
+background: white;
+color: #e74c3c;
+}
+
+.search_icon{
+height: 40px;
+width: 40px;
+float: right;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+color:white;
+}
+
+body {margin:0;}
+
+.topnav {
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+}
+
+.topnav a:hover {
+  border-bottom: 3px solid red;
+}
+
+.topnav a.active {
+  border-bottom: 3px solid red;
+}

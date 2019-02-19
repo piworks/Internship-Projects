@@ -1,0 +1,36 @@
+
+
+      <form ng-submit="add(event)">
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Name:</label>
+                      <input type="text" class="form-control" ng-model="parttime.firstname" />
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>Lastname:</label>
+                      <input type="text" class="form-control" ng-model="parttime.lastname">
+                    </div>
+            </div>
+            <div class="form-group">
+                    <div class="form-group col-md-6">
+                      <label>Email:</label>
+                      <input type="text" class="form-control" ng-model="parttime.email">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label>WorkFrom:</label>
+                      <input type="text" class="form-control" ng-model="parttime.workfrom">
+                    </div>
+            </div>
+            <div class="form-group">
+                    <div class="form-group col-md-6">
+                      <label>ID:</label>
+                      <input type="text" class="form-control" ng-model="parttime.id">
+                    </div>
+            </div>
+            <div class="form-group">
+                    <div class="col-md-10">
+                            <input type="submit" value="submit" class="btn btn-primary btn-sm" ng-show="submit" />
+                            <a href="#PartTime" button class="btn btn-default btn-sm">cancel</button></a>        
+                    </div>
+            </div>
+    </form>
