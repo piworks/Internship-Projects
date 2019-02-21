@@ -19,9 +19,8 @@
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
     "karma": "^4.0.0",
-    "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^2.0.0",
-    "karma-jasmine": "^2.0.1",
+    "karma-webpack": "^3.0.5",
     "local-web-server": "^2.6.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
@@ -37,6 +36,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.13.0",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -44,6 +44,10 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.6.0",
+    "jasmine": "^3.3.1",
+    "jasmine-core": "^3.3.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1",
     "script-loader": "^0.7.2",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
@@ -57,10 +61,19 @@
   "scripts": {
     "start": "webpack-dev-server --config=webpack.config.js",
     "dev": "webpack --mode development --config=webpack.config.js",
-    "build": "webpack --mode production ./src/app.js "
+    "build": "webpack --mode production ./src/app.js ",
+    "test": "karma start"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsliUral/P.I-Works-ParttimeCalendar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AsliUral/P.I-Works-ParttimeCalendar/issues"
+  },
+  "homepage": "https://github.com/AsliUral/P.I-Works-ParttimeCalendar#readme",
   "description": ""
 }

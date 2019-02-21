@@ -8,8 +8,7 @@ var appConfig = function  ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
         .when('/Home', {
-            template: homeView,
-            controller: 'HomeController'
+            template: '<home-view view-type="home"></home-view>'
         }).when('/PartTime', {
             template: '<part-time view-type="list"></part-time>'
         }).when('/CreateParttime', {

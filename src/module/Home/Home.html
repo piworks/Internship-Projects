@@ -1,48 +1,62 @@
-
 <html lang="en" ng-app="myApp" id="top">
-  <div class="span8"> 
-  <div role="main">
-      <div class="container">
-          <section id="directives-calendar">
-              <div class="well">
-                  <div class="row-fluid">
-                      <div class="span8">
-                          <tabset>
-                              <tab select="renderCalender('myCalendar');">
-                                <tab-heading>
-                                <i class="glyphicon glyphicon-bell"></i> Calendar
-                                </tab-heading>
-                                <div class="btn-toolbar">
-                                        <div class="pull-right">
-                                            <a href="#CreateNewEvent" class="btn btn-primary" role="button" title="Add New Event">
-                                                    Add a new event
-                                            </a>
-                                            <br>
-                                           
+
+<div class="span8">
+    <div role="main">
+        <div class="container">
+            <section id="directives-calendar">
+                <div class="well">
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <tabset>
+                                <tab select="renderCalender('myCalendar');">
+                                    <tab-heading>
+                                        <i class="glyphicon glyphicon-bell"></i> Calendar
+                                    </tab-heading>
+                                    <div class="btn-toolbar">
+                                        <div class="pull-right clearfix">
+                                            <div class="btn-group " style="padding-right: 10px">
+                                                <button type="button" ng-click="filterbyWork('getAll')" class="btn btn-sm btn-default">All</button>
+                                                <button type="button" ng-click="filterbyWork('remote')" class="btn btn-sm"
+                                                    style="background-color: #f08585; color:white">Remote</button>
+                                                <button type="button" ng-click="filterbyWork('inoffice')" class="btn btn-sm"
+                                                    style="background-color: #415d85; color:white">InOffice</button>
+                                                <button type="button" ng-click="filterbyWork('home')" class="btn btn-sm"
+                                                    style="background-color: #9fccad; color:white ">Home</button>
+                                            </div>
+
+                                            <a href="#CreateNewEvent" class="btn btn-primary" role="button" title="Add New Event">Manage
+                                                Event </a>
+                                            <!-- <div class="text"><i class="glyphicon glyphicon glyphicon-filter"></i>Filter</div> -->
+
+
+
                                         </div>
                                         <div class="btn-group">
-                                        <button class="btn btn-primary" ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
-                                        <button class="btn btn-primary" ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
-                                        <button class="btn btn-primary" ng-click="changeView('month', 'myCalendar')">Month</button>
-                                  </div>
-                                </div>
-                                <br>
-                              <div class="calendar" ng-model="events" calendar="myCalendar" ui-calendar="uiConfig.calendar"></div>
-                            </tab>
-                          </tabset>
-                      </div>
-                  </div>
-              </div>
-              <body>
-                  <div id="calendar">
-                        <div class="pull-right text-info small "><font color="#f08585"> Remote,  </font>  </div>
-                        <div class="pull-right text-info small"><font color="#415d85">InOffice,  </font></div>
-                        <div class="pull-right text-info small"><font color="#9fccad">Home,  </font></div>
-                  </div>
-                  
+                                            <button class="btn btn-primary" ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
+                                            <button class="btn btn-primary" ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
+                                            <button class="btn btn-primary" ng-click="changeView('month', 'myCalendar')">Month</button>
+                                            <br>
+                                            <br>
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="calendar" ng-model="events" calendar="myCalendar" ui-calendar="uiConfig.calendar"></div>
+                                </tab>
+                            </tabset>
+                        </div>
+                    </div>
+                </div>
+
+                <body>
+                    <div id="calendar">
+
+                    </div>
+
                 </body>
-          </section>
-      </div>
-  </div>
+            </section>
+        </div>
+    </div>
 </div>
+
 </html>

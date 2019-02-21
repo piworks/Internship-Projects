@@ -8,9 +8,13 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
     var m = date.getMonth();
     var y = date.getFullYear();
 
+
+
     $scope.event = {};
     $scope.events = [];
     $scope.eventList = [];
+
+    $scope.eventColor = [];
 
     $scope.parttime = {};
     $scope.parttimeList = [];
@@ -23,26 +27,57 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
         }
     );
 
+    $scope.filterbyWork = function(name){
 
-    HomeService.getAll().then(
-        function (events) {
-            events.forEach(event => {
-                var cal_event = {"id": event.EventID ,"title": event.Title ,"start": event.start , "end": event.end ,"description": event.Description, "allDay": event.IsFullDay }
-                if(event.Work === "inoffice"){
-                    cal_event.color = '#415d85';
+    $scope.eventColor = [];
+    $scope.deneme('myCalendar');
+    $scope.updateView('myCalendar',$scope.eventColor);
+            $scope.events.forEach(event => {
+                if(name=='remote'){
+                    if(event.color === '#f08585'){
+                        $scope.eventColor.push(event);
+                    }
+                    
                 }
-                if(event.Work === "remote"){
-                    cal_event.color = '#f08585';
+                if(name=='home'){
+                    if(event.color === '#9fccad'){
+                        $scope.eventColor.push(event);
+                    }
                 }
-                if(event.Work === "home"){
-                    cal_event.color = '#9fccad';
+                if(name=='inoffice'){
+                    if(event.color === '#415d85'){
+                        $scope.eventColor.push(event);
+                    }
                 }
-                $scope.events.push(cal_event);
+                if(name=='getAll'){
+                    $scope.eventColor.push(event);
+                }
             });
-            $scope.updateView('myCalendar',$scope.events);
-        }
-        
-    );
+    $scope.updateView('myCalendar',$scope.eventColor);
+   
+    }
+
+        HomeService.getAll().then(
+            function (events) {
+                events.forEach(event => {
+                    var cal_event = {"id": event.EventID ,"title": event.Title ,"start": event.start , "end": event.end ,"description": event.Description, "allDay": event.IsFullDay }
+                    if(event.Work === "inoffice"){
+                        cal_event.color = '#415d85';
+                    }
+                    if(event.Work === "remote"){
+                        cal_event.color = '#f08585';
+                    }
+                    if(event.Work === "home"){
+                        cal_event.color = '#9fccad';
+                    }
+                    $scope.events.push(cal_event);
+                });
+                $scope.updateView('myCalendar',$scope.events);
+            }
+            
+        );
+  
+  
     $scope.add = function(){
     
         var newEvent  = {
@@ -73,6 +108,11 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
         toastr.success("Created a new newEvent");
     };
 
+    $scope.deneme = function(calendar){
+        uiCalendarConfig.calendars[calendar].fullCalendar( 'removeEventSources');
+    };
+
+  
 
     $scope.updateView = function(calendar,events) {
         uiCalendarConfig.calendars[calendar].fullCalendar('addEventSource', events);

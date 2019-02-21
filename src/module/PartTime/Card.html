@@ -8,10 +8,10 @@
           </h3>
           <div class="pull-right">
               <button type="button" class="btn btn-sm btn-default" ng-submit="editParttime(parttime)" data-toggle="modal"
-              data-target="#myModal" title="Edit">
+              data-target="#myModal" title="Edit parttime">
               <i class="glyphicon glyphicon-pencil"></i>
               </button>
-              <button class="btn btn-default btn-sm open-dialog" type="button" ng-click="confirmationDialog(parttime)"> <i class="glyphicon glyphicon-trash"></i></button>     
+              <button class="btn btn-default btn-sm open-dialog" type="button" ng-click="confirmationDialog(parttime)" title="Delete parttime"> <i class="glyphicon glyphicon-trash"></i></button>     
             
           </div>
       </div>
@@ -33,6 +33,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title">{{confirmationDialogConfig.title}}</h4>
             </div>
             <div class="modal-body">
@@ -64,22 +65,25 @@
                                 <label>Name:</label>
                                 <input type="text" class="form-control" ng-model="parttime.firstname">
                                 <label>Lastname:</label>
-                                <input type="text" class="form-control" ng-model="parttime.lastname">
-                                </h3>
+                                <input type="text" class="form-control" ng-model="parttime.lastname">  
                             </div>
                             <div class="panel-body">
                                 <label>ID:</label>
                                 <input type="text" class="form-control" ng-model="parttime.id">
-                      
-                      
                                 <label>WorkFrom:</label>
                                 <input type="text" class="form-control" ng-model="parttime.workfrom">
+                                <label>Email:</label>
+                                <input type="text" class="form-control" ng-model="parttime.email">
                       
                             </div>
                             <div class="panel-footer clearfix">
                               <div class="pull-left text-info small">#{{parttime.id}}</div>
                               <div class="pull-right text-info small">{{parttime.email}}  <i class="glyphicon glyphicon-envelope"></i> </div>
                             </div>
+                            <div class=pull-right>
+                                <input type="submit" value="submit" class="btn btn-primary btn-sm" ng-show="submit" data-dismiss="modal" />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                              </div>
                           </div>
     
                 </div>

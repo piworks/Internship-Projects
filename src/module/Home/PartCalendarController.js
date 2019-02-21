@@ -105,6 +105,17 @@ var PartCalendarController = function ($scope,uiCalendarConfig,$compile,$timeout
             HomeService.add(newEvent).then(
                 function () {
                     $scope.events.push(newEvent);
+                    
+                    $scope.eventList=[];
+
+            
+
+                    $scope.eventsFiltered = $scope.events.filter((e) => e.ParttimeId == $scope.parttime.id);
+                    $scope.updateView('myCalendar',$scope.eventsFiltered);
+
+                    toastr.success("Created a new newEvent");
+
+                    locaiton.reload();
     
                 }
      
@@ -112,37 +123,32 @@ var PartCalendarController = function ($scope,uiCalendarConfig,$compile,$timeout
 
         })
 
-        $scope.eventList=[];
-
-   
-
-        $scope.eventsFiltered = $scope.events.filter((e) => e.ParttimeId == $scope.parttime.id);
-        $scope.updateView('myCalendar',$scope.eventsFiltered);
-
-        toastr.success("Created a new newEvent");
-
-        locaiton.reload();
     };
 
     $scope.cancel = function(event){
 
-        $scope.eventList.pop(event); // evenlistden gerekli idyi bul ve sil
+       
+        $scope.eventList.splice($scope.events.indexOf(event),1);
     };
 
     $scope.delete = function(event){
        
       
         HomeService.delete(event).then(
-            function (events) {
-                $scope.events = events;
+            function () {
+
+                $scope.events.splice($scope.events.indexOf(event),1);
+                $scope.eventsFiltered = $scope.events.filter((e) => e.ParttimeId == $scope.parttime.id);
+                $scope.updateView('myCalendar',$scope.eventsFiltered);
+                toastr.error("event is deleted");
+        
             }
             
         );
 
-        $scope.eventsFiltered = $scope.events.filter((e) => e.ParttimeId == $scope.parttime.id);
-        $scope.updateView('myCalendar',$scope.eventsFiltered);
-        toastr.error("event is deleted");
+        locaiton.reload();
 
+       
     }
 
     $scope.findEvent = function (parttime) {

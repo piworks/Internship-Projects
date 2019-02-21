@@ -36,6 +36,7 @@ import partTimeView from './module/PartTime/PartTime.html';
 import cardView from './module/PartTime/Card.html';
 import partTimeCreate from './module/PartTime/Create.html';
 import listView from './module/PartTime/Table.html';
+import homeView from './module/Home/Home.html';
 
 
 
@@ -50,6 +51,14 @@ var myApp = angular.module('myApp', [
    
     
     ])
+    myApp.component('homeView',{
+        template:homeView,
+        controller:HomeController,
+        bindings: {
+            viewType: '@'
+        }
+
+    });
     myApp.component('partTime',{
         template:partTimeView,
         controller:PartTimeController,
@@ -80,6 +89,7 @@ var myApp = angular.module('myApp', [
     }) 
     
 
+
 import appConfig from './app.config.js';
 myApp.config(appConfig);
 
@@ -97,8 +107,6 @@ myApp.service("PartTimeService", PartTimeService);
 
 import HomeService from './module/Home/HomeService.js';
 myApp.service("HomeService", HomeService);
-
-
 
 
 export default myApp;
