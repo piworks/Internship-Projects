@@ -57,11 +57,12 @@ var PartTimeController = function($scope,PartTimeService,toastr) {
             function () {
                 $scope.parttimeList = [];
                 $scope.parttimeList.push(newPartTime);
+                toastr.success("Created a new parttime");
             }
  
         )
 
-        toastr.success("Created a new parttime");
+
     }
 
     $scope.editParttime = function(parttime){
@@ -70,8 +71,8 @@ var PartTimeController = function($scope,PartTimeService,toastr) {
 
     $scope.confirmationDialogConfig = {};
 
-    $scope.confirmationDialog = function(event) {
-        $scope.event=event;
+    $scope.confirmationDialog = function(parttime) {
+        $scope.parttime=parttime;
       $scope.confirmationDialogConfig = {
         title: "Delete Screen",
         message: "Are you sure you want to delete?",

@@ -16,15 +16,15 @@
                                         <div class="pull-right clearfix">
                                             <div class="btn-group " style="padding-right: 10px">
                                                 <button type="button" ng-click="filterbyWork('getAll')" class="btn btn-sm btn-default">All</button>
-                                                <button type="button" ng-click="filterbyWork('remote')" class="btn btn-sm"
+                                                <button type="button" id="remote" ng-click="filterbyWork('remote')" class="btn btn-sm"
                                                     style="background-color: #f08585; color:white">Remote</button>
-                                                <button type="button" ng-click="filterbyWork('inoffice')" class="btn btn-sm"
+                                                <button type="button"  id="inoffice" ng-click="filterbyWork('inoffice')" class="btn btn-sm"
                                                     style="background-color: #415d85; color:white">InOffice</button>
-                                                <button type="button" ng-click="filterbyWork('home')" class="btn btn-sm"
+                                                <button type="button" id="home" ng-click="filterbyWork('home')" class="btn btn-sm"
                                                     style="background-color: #9fccad; color:white ">Home</button>
                                             </div>
 
-                                            <a href="#CreateNewEvent" class="btn btn-primary" role="button" title="Add New Event">Manage
+                                            <a href="#CreateNewEvent" class="btn btn-primary" role="button" id="ManageButton" title="Add New Event">Manage
                                                 Event </a>
                                             <!-- <div class="text"><i class="glyphicon glyphicon glyphicon-filter"></i>Filter</div> -->
 
@@ -32,9 +32,9 @@
 
                                         </div>
                                         <div class="btn-group">
-                                            <button class="btn btn-primary" ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
-                                            <button class="btn btn-primary" ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
-                                            <button class="btn btn-primary" ng-click="changeView('month', 'myCalendar')">Month</button>
+                                            <button class="btn btn-primary" id='Day' ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
+                                            <button class="btn btn-primary" id='Week'  ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
+                                            <button class="btn btn-primary" id='Month' ng-click="changeView('month', 'myCalendar')">Month</button>
                                             <br>
                                             <br>
 

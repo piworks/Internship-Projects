@@ -1,36 +1,28 @@
-
-
-      <form ng-submit="add(event)">
+      <form id="Create" ng-submit="add(event)">
             <div class="form-row">
                     <div class="form-group col-md-6">
                       <label>Name:</label>
-                      <input type="text" class="form-control" ng-model="parttime.firstname" />
+                      <input type="text" class="form-control" pattern="[A-Za-z]*" title="try letter" maxlength="15" minlength="3" ng-model="parttime.firstname" required/>
                     </div>
                     <div class="form-group col-md-6">
                       <label>Lastname:</label>
-                      <input type="text" class="form-control" ng-model="parttime.lastname">
+                      <input type="text" class="form-control" pattern="[A-Za-z]*" ng-model="parttime.lastname" maxlength="15" minlength="3" title="try letter" required/>
                     </div>
             </div>
             <div class="form-group">
                     <div class="form-group col-md-6">
                       <label>Email:</label>
-                      <input type="text" class="form-control" ng-model="parttime.email">
+                      <input type="email" class="form-control" ng-model="parttime.email" required/>
                     </div>
                     <div class="form-group col-md-6">
                       <label>WorkFrom:</label>
-                      <input type="text" class="form-control" ng-model="parttime.workfrom">
-                    </div>
-            </div>
-            <div class="form-group">
-                    <div class="form-group col-md-6">
-                      <label>ID:</label>
-                      <input type="text" class="form-control" ng-model="parttime.id">
+                      <input type="text" class="form-control" ng-model="parttime.workfrom"  maxlength="15" minlength="3" required/>
                     </div>
             </div>
             <div class="form-group">
                     <div class="col-md-10">
-                            <input type="submit" value="submit" class="btn btn-primary btn-sm" ng-show="submit" />
-                            <a href="#PartTime" button class="btn btn-default btn-sm">cancel</button></a>        
+                            <input type="submit" id="submit" value="submit" class="btn btn-primary btn-sm" ng-show="submit" />
+                            <a href="#PartTime" id="cancel" button class="btn btn-default btn-sm">cancel</button></a>        
                     </div>
             </div>
     </form>

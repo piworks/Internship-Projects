@@ -8,8 +8,6 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
     var m = date.getMonth();
     var y = date.getFullYear();
 
-
-
     $scope.event = {};
     $scope.events = [];
     $scope.eventList = [];
@@ -21,6 +19,26 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
     $scope.newPartTime = {};
     
 
+    HomeService.getAll().then(
+        function (events) {
+            events.forEach(event => {
+                var cal_event = {"id": event.EventID ,"title": event.Title ,"start": event.start , "end": event.end ,"description": event.Description, "allDay": event.IsFullDay,"ParttimeId": event.ParttimeId }
+                if(event.Work === "inoffice"){
+                    cal_event.color = '#415d85';
+                }
+                if(event.Work === "remote"){
+                    cal_event.color = '#f08585';
+                }
+                if(event.Work === "home"){
+                    cal_event.color = '#9fccad';
+                }
+                $scope.events.push(cal_event);
+            });
+            $scope.updateView('myCalendar',$scope.events);
+        }
+        
+    );
+    
     HomeService.getPart().then(
         function (parttimeList) {
             $scope.parttimeList = parttimeList;
@@ -57,25 +75,7 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
    
     }
 
-        HomeService.getAll().then(
-            function (events) {
-                events.forEach(event => {
-                    var cal_event = {"id": event.EventID ,"title": event.Title ,"start": event.start , "end": event.end ,"description": event.Description, "allDay": event.IsFullDay }
-                    if(event.Work === "inoffice"){
-                        cal_event.color = '#415d85';
-                    }
-                    if(event.Work === "remote"){
-                        cal_event.color = '#f08585';
-                    }
-                    if(event.Work === "home"){
-                        cal_event.color = '#9fccad';
-                    }
-                    $scope.events.push(cal_event);
-                });
-                $scope.updateView('myCalendar',$scope.events);
-            }
-            
-        );
+       
   
   
     $scope.add = function(){
@@ -115,6 +115,7 @@ var HomeController = function ($scope,uiCalendarConfig,$compile,HomeService,$tim
   
 
     $scope.updateView = function(calendar,events) {
+        uiCalendarConfig.calendars[calendar].fullCalendar('removeEvents');
         uiCalendarConfig.calendars[calendar].fullCalendar('addEventSource', events);
         uiCalendarConfig.calendars[calendar].fullCalendar('refetchEvents');
     };

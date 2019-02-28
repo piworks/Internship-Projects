@@ -1,14 +1,21 @@
+var webpackConfig = require('./webpack.config.js');
 module.exports = function(config) {
     config.set({
       basePath: '',
       exclude: [],
       files: [
-        {pattern: 'tests/unit/*.js',watched:true,served:true,included:true}  
+        //'tests/unit/Homecontroller-spec.Spec.js',
+        //'tests/unit/Homeservice-spec.Spec.js',
+        //'tests/unit/Parttimecomponent-spec.Spec.js',
+        'tests/e2e/Home-spec.Spec.js',
+        './src/app.js'
+        
+        
       ],
       plugins: [
-          require('karma-jasmine'),
-          require('karma-chrome-launcher'),
-          require('karma-webpack')
+          'karma-jasmine',
+          'karma-chrome-launcher',
+          'karma-webpack'
 
       ],
       
@@ -48,24 +55,10 @@ module.exports = function(config) {
       },
   
 
-    //   webpack: {
-    //     module: {
-    //       rules: [
-    //         {
-    //           test: /\.js$/i,
-    //           exclude:/(node_modules)/,
-    //           loader:'babel-loader',
-    //           options:{
-    //             presets:['@babel/preset-env']
-    //           }
-    //         }
-    //       ]
-    //     }
-    //   },
-
-    webpack: require('./webpack.config.js'),
+    webpack: webpackConfig,
       preprocessors: {
         //add webpack as preprocessor to support require() in test-suits .js files
+        './src/app.js': ['webpack'],
         './tests/unit/*.js': ['webpack']
       },
       webpackMiddleware: {

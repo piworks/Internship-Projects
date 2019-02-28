@@ -9,7 +9,7 @@
       <li class="list-group-item clearfix " ng-click="run(parttime)" ng-repeat="parttime in parttimeList">
         {{parttime.firstname}}
         <div class="btn-group  pull-right ">
-          <button type="button" class="btn btn-sm btn-default" ng-submit="add(parttime)" data-toggle="modal"
+          <button type="button" id="plus" class="btn btn-sm btn-default" ng-submit="add(parttime)" data-toggle="modal"
             data-target="#myModal" title="Click to add an event">
             <i class="glyphicon glyphicon-plus"></i>
           </button>
@@ -81,7 +81,7 @@
                       {{event.Work}}
                     </td>
                     <td>
-                      <button class="btn btn-default btn-sm" ng-click="cancel(event)">
+                      <button class="btn btn-default btn-sm" id='cancel' ng-click="cancel(event)">
                         <i class="glyphicon glyphicon-trash"></i>
                       </button>
                     </td>
