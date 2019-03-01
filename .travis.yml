@@ -17,3 +17,6 @@ cache:
 
 install:
   - npm install
+
+script:
+    - npm run e2e
