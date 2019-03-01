@@ -1,0 +1,93 @@
+<div ng-controller="PartTimeController">
+  <div class="col-sm-6 col-md-4" ng-repeat="parttime in parttimeList">
+    <div class="panel panel-info">
+      <div class="panel-heading clearfix">
+        <h4 class="pull-left">
+          <i class="glyphicon glyphicon glyphicon-user"></i>
+          {{parttime.firstname}} {{parttime.lastname}}
+          </h3>
+          <div class="pull-right">
+              <button type="button" class="btn btn-sm btn-default" ng-submit="editParttime(parttime)" data-toggle="modal"
+              data-target="#myModal" title="Edit parttime">
+              <i class="glyphicon glyphicon-pencil"></i>
+              </button>
+              <button class="btn btn-default btn-sm open-dialog" type="button" id="deleteFor" ng-click="confirmationDialog(parttime)" title="Delete parttime"> <i class="glyphicon glyphicon-trash"></i></button>     
+            
+          </div>
+      </div>
+      <div class="panel-body">
+        <b>Id :</b>{{parttime.id}}<br>
+
+
+        <b>Workfrom :</b>{{parttime.workfrom}}<br>
+
+      </div>
+      <div class="panel-footer clearfix">
+        <div class="pull-left text-info small">#{{parttime.id}}</div>
+        <div class="pull-right text-info small">{{parttime.email}}  <i class="glyphicon glyphicon-envelope"></i> </div>
+      </div>
+    </div>
+  </div>
+  <div id="confirmation-dialog">
+      <div class="modal fade confirmation-dialog" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">{{confirmationDialogConfig.title}}</h4>
+            </div>
+            <div class="modal-body">
+              <div class="span5">{{confirmationDialogConfig.message}}</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" id ="delete" ng-repeat="button in confirmationDialogConfig.buttons" ng-click="delete(parttime)" class="btn btn-primary">{{button.label}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form ng-submit="update(parttime)">
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Update Parttime for {{parttime.firstname}}
+                           
+                        </h4>
+                    </div>
+                    <div class="modal-body clearfix">
+                        <div class="panel panel-info">
+                            <div class="panel-heading clearfix">
+                              <h4 class="pull-left">
+                                <i class="glyphicon glyphicon glyphicon-user"></i>
+                                <label>Name:</label>
+                                <input type="text" class="form-control" ng-model="parttime.firstname">
+                                <label>Lastname:</label>
+                                <input type="text" class="form-control" ng-model="parttime.lastname">  
+                            </div>
+                            <div class="panel-body">
+                                <label>ID:</label>
+                                <input type="text" class="form-control" ng-model="parttime.id">
+                                <label>WorkFrom:</label>
+                                <input type="text" class="form-control" ng-model="parttime.workfrom">
+                                <label>Email:</label>
+                                <input type="text" class="form-control" ng-model="parttime.email">
+                      
+                            </div>
+                            <div class="panel-footer clearfix">
+                              <div class="pull-left text-info small">#{{parttime.id}}</div>
+                              <div class="pull-right text-info small">{{parttime.email}}  <i class="glyphicon glyphicon-envelope"></i> </div>
+                            </div>
+                            <div class=pull-right>
+                                <input type="submit" value="submit" class="btn btn-primary btn-sm" ng-show="submit" data-dismiss="modal" />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                              </div>
+                          </div>
+    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
