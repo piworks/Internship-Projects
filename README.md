@@ -3,6 +3,7 @@
 *The goal is more pratical use for planning days which are parttime's work-day.*
 
 ## Features:
+- [x] All work-day and parttime save database in back-end and also they have a relation
 - [x] Filtred by remote,inoffice and home attribute on calendar
 - [x] Day,Week and Month view 
 - [x] Filtred by parttime name
