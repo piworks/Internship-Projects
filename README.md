@@ -2,7 +2,7 @@
 *This project made for parttime.*
 *The goal is more pratical use for planning days which are parttime's work-day.*
 
-##Features:
+## Features:
 - [x] Filtred by remote,inoffice and home attribute on calendar
 - [x] Day,Week and Month view 
 - [x] Filtred by parttime name
@@ -13,7 +13,7 @@
 - [x] All buttons have a title and warning/success/error toastr
 - [x] Delete buttons have a modal which is a warning about delete work-day/parttime
 
-##Folder Structure:
+## Folder Structure:
 ```sh
 Parttime-Calendar:.
 |   .babelrc
@@ -84,7 +84,7 @@ Parttime-Calendar:.
 
 
 ## Technologies:
-######Project is created with:
+###### Project is created with:
 - Bootstrap 3.2.1 
 - Jquery 3.3.1
 - Angular 1.7.6 
