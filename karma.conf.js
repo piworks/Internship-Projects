@@ -53,6 +53,13 @@ module.exports = function(config) {
           random: false
         }
       },
+
+      customLaunchers: {
+        ChromeHeadlessNoSandbox: {
+          base: 'ChromeHeadless',
+          flags: ['--no-sandbox']
+        }
+      },
   
 
     webpack: webpackConfig,
