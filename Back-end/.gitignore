@@ -191,4 +191,8 @@ project.lock.json
 **/node_modules/*
 **/wwwroot/*
 
-
+./packages
+./Parttime/Content
+./Parttime/fonts
+./Parttime/Scripts
+./Parttime/Views
