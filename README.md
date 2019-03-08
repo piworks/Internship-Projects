@@ -131,12 +131,12 @@ npm run e2e
 
 ## Screenshot:
 - Home Page
-![HomePage](./img/HomePage.PNG)
+![HomePage](./Front-end/img/HomePage.PNG)
 - Add/Delete work-day on calendar
-![CreateCalendarPage](./img/CreateCalendarPage.PNG)
+![CreateCalendarPage](./Front-end/img/CreateCalendarPage.PNG)
 - List of the parttime
-![ParttimePage](./img/ParttimePage.PNG)
+![ParttimePage](./Front-end/img/ParttimePage.PNG)
 - Card view of parttime
-![ParttimeCardView](./img/ParttimeCardView.PNG)
+![ParttimeCardView](./Front-end/img/ParttimeCardView.PNG)
 - Create a new parttime
-![CreatePage](./img/CreatePage.PNG)
+![CreatePage](./Front-end/img/CreatePage.PNG)

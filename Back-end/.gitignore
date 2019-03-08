@@ -192,7 +192,7 @@ project.lock.json
 **/wwwroot/*
 
 ./packages
-./Parttime/Content
+./Parttime/Parttime_temp/Content
 ./Parttime/fonts
 ./Parttime/Scripts
 ./Parttime/Views
