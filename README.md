@@ -19,7 +19,7 @@
 - [x] Delete buttons have a modal which is a warning about delete work-day/parttime
 
 ## DataBase MySQL Commands:
-```sh
+```sql sh
 show databases
 create database parttimedb
 # generate parttime table
