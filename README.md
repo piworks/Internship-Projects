@@ -4,6 +4,10 @@
 
 ## Features:
 - [x] All work-day and parttime save database in back-end and also they have a relation
+- [x] Use ASP.NET MVC and Visual Studio 2017
+- [x] Use MySQL Server as database back-end
+- [x] CRUD operation used.All functions executed in relational database applications and mapped to a standard HTTP method, MySQL statement.
+- [x] Use WebApi for Database and Controller  
 - [x] Filtred by remote,inoffice and home attribute on calendar
 - [x] Day,Week and Month view 
 - [x] Filtred by parttime name
@@ -14,6 +18,49 @@
 - [x] All buttons have a title and warning/success/error toastr
 - [x] Delete buttons have a modal which is a warning about delete work-day/parttime
 
+## DataBase MySQL Commands:
+```sh
+show databases
+create database parttimedb
+# generate parttime table
+CREATE TABLE parttime
+(
+  id              INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record
+  firstname            VARCHAR(150) NOT NULL,                
+  lastname           VARCHAR(150) NOT NULL,                
+  email           VARCHAR(150) NOT NULL,                        
+ workfrom  VARCHAR(150) NOT NULL.
+  PRIMARY KEY     (id)                                  # Make the id the primary key
+);
+#add a value to parttime table
+insert into parttime (firstname, lastname, email,workfrom) VALUES
+  ( 'asli', 'ural', 'asli.ural@piworks.net', 'inoffice');
+#check the database after adding
+  select * from parttime;
+
+#Also we need events table because  parttime calendar’s events drop database.
+#Use created database which is parttimedb
+use parttimedb
+# generate parttime table
+CREATE TABLE events
+(
+  EventID             INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record
+  Title            VARCHAR(150) NOT NULL,                
+  Description           VARCHAR(150) NOT NULL,                
+  StartAt          DATETIME NOT NULL,                        
+ EndAt   DATETIME NOT NULL,
+ IsFullDay   BIT NOT NULL,	
+ParttimeId INT NOT NULL ,  # for parttime and events table connection when added on table its automatically get the id from parttime table
+Work VARCHAR(150) NOT NULL,
+  PRIMARY KEY     (EventID)                                  # Make the id the primary key
+);
+#add a value to events table
+insert into events (Title, Description, StartAt, EndAt, IsFullDay, ParttimeId, Work) VALUES
+  ( 'parttime', 'exam week', ' 2019-02-19 15:00:00 ', ' 2019-03-19 15:00:00 ',false, '10', 'inoffice');
+#check the database after adding
+  select * from events;
+
+```
 ## Folder Structure:
 ```sh
 Parttime-Calendar:.
